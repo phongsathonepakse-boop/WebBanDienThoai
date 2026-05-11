@@ -1,9 +1,11 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
-WORKDIR /app
-COPY . .
-RUN dotnet publish -c Release -o out
+# ASP.NET Framework runtime
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
-WORKDIR /app
-COPY --from=build /app/out .
-ENTRYPOINT ["dotnet", "WebBanDienThoai.dll"]
+# Set IIS folder
+WORKDIR /inetpub/wwwroot
+
+# Copy all files
+COPY . .
+
+# Expose IIS port
+EXPOSE 80
