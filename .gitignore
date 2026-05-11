@@ -1,0 +1,45 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# ASP.NET cache
+*.cache
+
+# NuGet packages
+packages/
+!packages/build/
+
+# Logs
+*.log
+
+# IIS Express
+.vs/config/
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Windows files
+Thumbs.db
+Desktop.ini
+
+# Node modules (if any)
+node_modules/
+
+# Publish folder
+publish/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Rider / Resharper
+_ReSharper*/
+*.DotSettings.user
