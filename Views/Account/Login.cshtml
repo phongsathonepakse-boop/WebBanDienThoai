@@ -1,0 +1,57 @@
+@model WebBanDienThoai.Models.LoginViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Sign In";
+}
+
+<style>
+    body, html { background: #f5f5f7 !important; color: #1d1d1f; }
+    .ui-main { background: #f5f5f7; }
+    .account-shell { max-width: 520px; margin: 0 auto; }
+    .account-title { font-size: 46px; line-height: 1.04; font-weight: 800; margin: 0 0 12px; }
+    .account-copy { color: #6e6e73; margin: 0 0 28px; font-size: 16px; }
+    .account-card { background: #fff; border: 1px solid #e8e8ed; border-radius: 8px; padding: 28px; box-shadow: 0 18px 38px rgba(0,0,0,.05); }
+    .account-label { display: block; color: #6e6e73; font-size: 13px; font-weight: 700; margin: 16px 0 8px; }
+    .account-input, .account-select { width: 100%; box-sizing: border-box; background: #fbfbfd; border: 1px solid #d2d2d7; border-radius: 8px; color: #1d1d1f; padding: 13px 14px; outline: none; }
+    .account-input:focus, .account-select:focus { border-color: #0071e3; box-shadow: 0 0 0 3px rgba(0,113,227,.14); }
+    .account-btn { width: 100%; border: 0; border-radius: 999px; padding: 13px 18px; font-weight: 800; background: #0071e3; color: #fff; margin-top: 22px; }
+    .account-links { display: flex; justify-content: space-between; gap: 14px; margin-top: 18px; flex-wrap: wrap; }
+    .account-links a { color: #06c; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .validation-summary-errors, .account-message { border-radius: 8px; padding: 12px 14px; margin-bottom: 18px; font-weight: 700; }
+    .validation-summary-errors { background: #fff2f2; border: 1px solid #ffd7d7; color: #b42318; }
+    .validation-summary-errors ul { margin: 0; padding-left: 18px; }
+    .account-message { background: #eef8ff; border: 1px solid #c9e8ff; color: #0b5cab; }
+</style>
+
+<section class="account-shell">
+    <h1 class="account-title">Sign in to AURIONAS.</h1>
+    <p class="account-copy">Sign in with your account. Admin accounts open the dashboard automatically; user accounts go to the store.</p>
+
+    <div class="account-card">
+        @if (TempData["AccountMessage"] != null)
+        {
+            <div class="account-message">@TempData["AccountMessage"]</div>
+        }
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.ReturnUrl)
+            @Html.ValidationSummary(true)
+
+            <label class="account-label">Username</label>
+            @Html.TextBoxFor(m => m.Username, new { @class = "account-input", placeholder = "Enter username", required = "required" })
+
+            <label class="account-label">Password</label>
+            @Html.PasswordFor(m => m.Password, new { @class = "account-input", placeholder = "Enter password", required = "required" })
+
+            <button type="submit" class="account-btn">Sign In</button>
+        }
+
+        <div class="account-links">
+            <a href="@Url.Action("Register", "Account")">Create user account</a>
+            <a href="@Url.Action("ForgotPassword", "Account")">Forgot password?</a>
+        </div>
+    </div>
+</section>

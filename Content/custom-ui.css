@@ -1,0 +1,83 @@
+﻿:root {
+	--bg-main: #121212;
+	--bg-card: #1e1e1e;
+	--accent-blue: #3b82f6;
+	--text-primary: #ffffff;
+	--text-secondary: #a0aec0;
+	--border-subtle: #2d3748;
+}
+
+/* Product Grid Layout */
+.ui-product-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 24px;
+	padding: 20px;
+}
+
+/* Luxury Dark Card */
+/* Update these specific lines in your CSS */
+
+.ui-product-block {
+	background: #1e1e1e !important;
+	border: 1px solid #333;
+	/* ... keep other padding/radius rules ... */
+}
+
+.ui-product-img {
+	width: 100%;
+	height: 200px;
+	object-fit: contain;
+	background: transparent !important; /* Removes the white box */
+	padding: 10px;
+	display: block;
+}
+
+/* Ensure the 'Add to Cart' button stays consistent */
+.btn-buy {
+	background-color: #2d2d2d;
+	border: 1px solid #444;
+	color: white;
+	width: 100%;
+	padding: 10px;
+	border-radius: 8px;
+	margin-top: 15px;
+}
+
+	.btn-buy:hover {
+		background-color: #3b82f6; /* Electric Blue hover */
+		border-color: #3b82f6;
+	}
+
+/* Text & Pricing */
+.ui-product-name {
+	font-size: 1.1rem;
+	font-weight: 600;
+	color: var(--text-primary);
+	margin-top: 10px;
+}
+
+.ui-product-price {
+	font-size: 1.25rem;
+	font-weight: 700;
+	color: var(--accent-blue);
+	margin-bottom: 15px;
+}
+
+/* Modern Dark Button */
+.btn-buy {
+	background-color: #2d2d2d;
+	color: white;
+	border: 1px solid var(--border-subtle);
+	padding: 12px;
+	border-radius: 12px;
+	font-weight: 600;
+	text-align: center;
+	transition: all 0.2s;
+}
+
+	.btn-buy:hover {
+		background-color: var(--accent-blue);
+		border-color: var(--accent-blue);
+		box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+	}
