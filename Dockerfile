@@ -1,11 +1,9 @@
-# Use IIS with ASP.NET Framework
-FROM mcr.microsoft.com/dotnet/framework/aspnet:4.8
-
-# Set working directory
-WORKDIR /inetpub/wwwroot
-
-# Copy project files
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /app
 COPY . .
+RUN dotnet publish -c Release -o out
 
-# Expose port
-EXPOSE 80
+FROM mcr.microsoft.com/dotnet/aspnet:10.0
+WORKDIR /app
+COPY --from=build /app/out .
+ENTRYPOINT ["dotnet", "WebBanDienThoai.dll"]
